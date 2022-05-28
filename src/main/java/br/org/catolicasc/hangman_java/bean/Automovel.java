@@ -1,4 +1,4 @@
-package br.org.catolicasc.catrh.bean;
+package br.org.catolicasc.hangman_java.bean;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

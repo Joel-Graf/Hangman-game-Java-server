@@ -1,10 +1,10 @@
-package br.org.catolicasc.catrh;
+package br.org.catolicasc.hangman_java;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CatRhApplicationTests {
+class HangmanJavaTests {
 
 	@Test
 	void contextLoads() {

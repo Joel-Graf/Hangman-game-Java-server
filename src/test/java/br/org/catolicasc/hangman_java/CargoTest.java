@@ -1,4 +1,4 @@
-package br.org.catolicasc.catrh;
+package br.org.catolicasc.hangman_java;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.util.Assert;
 
-import br.org.catolicasc.catrh.bean.Cargo;
-import br.org.catolicasc.catrh.repository.CargoRepository;
+import br.org.catolicasc.hangman_java.bean.Cargo;
+import br.org.catolicasc.hangman_java.repository.CargoRepository;
 
 @SpringBootTest
 public class CargoTest {

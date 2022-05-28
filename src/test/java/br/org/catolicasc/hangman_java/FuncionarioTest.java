@@ -1,4 +1,4 @@
-package br.org.catolicasc.catrh;
+package br.org.catolicasc.hangman_java;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
-import br.org.catolicasc.catrh.bean.Cargo;
-import br.org.catolicasc.catrh.bean.Funcionario;
-import br.org.catolicasc.catrh.repository.CargoRepository;
-import br.org.catolicasc.catrh.repository.FuncionarioRepository;
+import br.org.catolicasc.hangman_java.bean.Cargo;
+import br.org.catolicasc.hangman_java.bean.Funcionario;
+import br.org.catolicasc.hangman_java.repository.CargoRepository;
+import br.org.catolicasc.hangman_java.repository.FuncionarioRepository;
 
 @SpringBootTest
 public class FuncionarioTest {

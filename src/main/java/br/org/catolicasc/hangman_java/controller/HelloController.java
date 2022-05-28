@@ -1,4 +1,4 @@
-package br.org.catolicasc.catrh.controller;
+package br.org.catolicasc.hangman_java.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

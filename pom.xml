@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.org.catolicasc</groupId>
-	<artifactId>cat-rh</artifactId>
+	<artifactId>hangman_java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cat-rh</name>
-	<description>RH da Católica de sSC</description>
+	<name>hangman_java</name>
+	<description>Hangman_Java</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

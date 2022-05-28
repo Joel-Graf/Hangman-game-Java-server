@@ -1,11 +1,11 @@
-package br.org.catolicasc.catrh.dto;
+package br.org.catolicasc.hangman_java.dto;
 
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotBlank;
 
-import br.org.catolicasc.catrh.bean.Funcionario;
-import br.org.catolicasc.catrh.repository.CargoRepository;
+import br.org.catolicasc.hangman_java.bean.Funcionario;
+import br.org.catolicasc.hangman_java.repository.CargoRepository;
 
 public class RequisicaoNovoFuncionario {
 

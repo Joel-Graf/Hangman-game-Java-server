@@ -1,4 +1,4 @@
-package br.org.catolicasc.catrh.repository;
+package br.org.catolicasc.hangman_java.repository;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import br.org.catolicasc.catrh.bean.Cargo;
+import br.org.catolicasc.hangman_java.bean.Cargo;
 
 @Repository
 public interface CargoRepository extends PagingAndSortingRepository<Cargo, Long>,

@@ -1,4 +1,4 @@
-package br.org.catolicasc.catrh.controller;
+package br.org.catolicasc.hangman_java.controller;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.org.catolicasc.catrh.bean.Funcionario;
-import br.org.catolicasc.catrh.dto.RequisicaoNovoFuncionario;
-import br.org.catolicasc.catrh.repository.CargoRepository;
-import br.org.catolicasc.catrh.repository.FuncionarioRepository;
+import br.org.catolicasc.hangman_java.bean.Funcionario;
+import br.org.catolicasc.hangman_java.dto.RequisicaoNovoFuncionario;
+import br.org.catolicasc.hangman_java.repository.CargoRepository;
+import br.org.catolicasc.hangman_java.repository.FuncionarioRepository;
 
 @Controller
 @RequestMapping("/funcionario")
