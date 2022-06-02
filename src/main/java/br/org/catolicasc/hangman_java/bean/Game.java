@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class GameProgress {
+public class Game {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
@@ -22,7 +22,7 @@ public class GameProgress {
 
   @Column(nullable = false)
   private int dificulty;
-  
+
   @Column(nullable = false)
   private int playerLife;
 }
