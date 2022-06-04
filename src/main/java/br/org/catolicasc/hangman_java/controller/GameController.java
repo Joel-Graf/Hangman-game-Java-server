@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import br.org.catolicasc.hangman_java.bean.Game;
 import br.org.catolicasc.hangman_java.bean.User;
@@ -30,7 +31,7 @@ public class GameController {
     // }
 
     // FIXME: Está logado, procura jogo em progresso
-    Game existingGame = gameRepository.getUserByUserId(testUser.getId());
+    Game existingGame = gameRepository.getGameByUserId(testUser.getId());
     if (existingGame == null) {
       Game newGame = new Game();
       newGame.setDificulty(1);
@@ -44,4 +45,5 @@ public class GameController {
 
     return "game"; // TODO: Passar existingGame
   }
+
 }
