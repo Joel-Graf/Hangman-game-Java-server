@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Forca</title>
+    <!-- IMPORTS EXTERNOS -->
+    <link th:href="@{/css/bootstrap/bootstrap.min.css}" rel="stylesheet" />
+    <!-- IMPORTS EXTERNOS -->
+    <!-- IMPORTS INTERNOS -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.png}" />
+    <!-- IMPORTS INTERNOS -->
+  </head>
+  <body class="body">
+    <header>
+      <h1>Criar Usuário</h1>
+    </header>
+
+    <div class="container">
+      <div class="card mt-3">
+        <form
+          th:object="${requestUserCreate}"
+          class="card-body"
+          action="/user/create"
+          method="post"
+        >
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input
+              th:field="*{name}"
+              th:errorClass="is-invalid"
+              class="form-control"
+              placeholder="Seu Nome"
+            />
+            <small>Informe seu Nome</small>
+            <div class="invalid-feedback" th:errors="*{name}">
+              Erro no Nome!
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="login">Login</label>
+            <input
+              th:field="*{login}"
+              th:errorClass="is-invalid"
+              class="form-control"
+              placeholder="Seu Login"
+            />
+            <small>Informe seu Login</small>
+            <div class="invalid-feedback" th:errors="*{login}">
+              Erro no Login!
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input
+              th:field="*{password}"
+              th:errorClass="is-invalid"
+              class="form-control"
+              placeholder="Sua Senha"
+            />
+            <small>Informe sua Senha</small>
+            <div class="invalid-feedback" th:errors="*{password}">
+              Erro na Senha!
+            </div>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Cadastrar</button>
+          <div style="color: red" th:if="${error}">Usuário já existe!</div>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <p>Alunos: Joel Graf e Gustavo Blasius</p>
+    </footer>
+  </body>
+</html>
