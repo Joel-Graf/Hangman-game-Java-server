@@ -25,4 +25,45 @@ public class Game {
 
   @Column(nullable = false)
   private int playerLife;
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public Word getWord() {
+    return word;
+  }
+
+  public void setWord(Word word) {
+    this.word = word;
+  }
+
+  public int getDificulty() {
+    return dificulty;
+  }
+
+  public void setDificulty(int dificulty) {
+    this.dificulty = dificulty;
+  }
+
+  public int getPlayerLife() {
+    return playerLife;
+  }
+
+  public void setPlayerLife(int playerLife) {
+    this.playerLife = playerLife;
+  }
+
 }
