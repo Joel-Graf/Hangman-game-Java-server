@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import br.org.catolicasc.hangman_java.bean.User;
 import br.org.catolicasc.hangman_java.dto.RequestUserCreate;
+import br.org.catolicasc.hangman_java.dto.RequestUserLogin;
 import br.org.catolicasc.hangman_java.repository.UserRepository;
 
 @Controller
@@ -33,8 +34,8 @@ public class UserController {
       return "user-create";
     }
 
-    List<User> existingUsers = userRepository.getUserByLogin(request.getLogin());
-    if (existingUsers.size() > 0) {
+    User existingUser = userRepository.getUserByLogin(request.getLogin());
+    if (existingUser != null) {
       model.addAttribute("error", "Duplicated User"); // FIXME: Passar erro de um jeito melhor
       return "user-create";
     }
@@ -44,4 +45,28 @@ public class UserController {
     return "redirect:/game"; // TODO: Passar usuário logado
 
   }
+
+  @GetMapping("user/login")
+  public String loginForm(RequestUserLogin request) {
+    return "user-login";
+  }
+
+  @PostMapping("user/login")
+  public String login(@Valid RequestUserLogin request, BindingResult result, Model model) {
+
+    if (result.hasErrors()) {
+      return "user-login";
+    }
+
+    User loggedUser = userRepository.getUserByLoginAndPassword(request.getLogin(), request.getPassword());
+
+    if (loggedUser == null) {
+      model.addAttribute("error", "Invalid User"); // FIXME: Passar erro de um jeito melhor
+      return "user-login";
+    }
+
+    return "redirect:/game"; // TODO: Passar usuário logado
+
+  }
+
 }

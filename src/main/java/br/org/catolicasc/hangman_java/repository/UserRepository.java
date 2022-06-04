@@ -13,6 +13,9 @@ import br.org.catolicasc.hangman_java.bean.User;
 public interface UserRepository extends CrudRepository<User, Long> {
 
   @Query("select u from User u where u.login = :login")
-  List<User> getUserByLogin(@Param("login") String login);
+  User getUserByLogin(@Param("login") String login);
+
+  @Query("select u from User u where u.login = :login and u.password = :password ")
+  User getUserByLoginAndPassword(@Param("login") String login, @Param("password") String password);
 
 }
