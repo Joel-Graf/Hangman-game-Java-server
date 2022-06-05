@@ -14,6 +14,17 @@
     <!-- IMPORTS INTERNOS -->
   </head>
   <body class="body">
+    <header>
+      <h1>Derrota!!</h1>
+      <p>Tente outra vez</p>
+    </header>
+    <div>
+      <!-- TODO: Chamar delete passando info -->
+      <form class="card-body" action="/game/delete" method="post">
+        <button class="btn btn-primary" type="submit">Reiniciar!</button>
+      </form>
+    </div>
+
     <!-- IMPORTS EXTERNOS -->
     <script type="text/javascript" th:src="@{/js/react/react.js}"></script>
     <script type="text/javascript" th:src="@{/js/react/react-dom.js}"></script>

@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class Word {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Long id;
 
   @Column(nullable = false)
   private int dificulty;
@@ -18,11 +18,11 @@ public class Word {
   @Column(nullable = false, unique = true)
   private String word;
 
-  public int getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

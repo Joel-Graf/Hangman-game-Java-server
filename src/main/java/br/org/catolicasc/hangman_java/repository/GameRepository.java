@@ -12,6 +12,6 @@ import org.springframework.data.repository.query.Param;
 public interface GameRepository extends CrudRepository<Game, Long> {
 
   @Query("select g from Game g where g.user.id = :userId")
-  Game getGameByUserId(@Param("userId") int userId);
+  Game getGameByUserId(@Param("userId") Long userId);
 
 }
