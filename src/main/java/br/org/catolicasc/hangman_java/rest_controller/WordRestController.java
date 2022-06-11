@@ -1,4 +1,4 @@
-package br.org.catolicasc.hangman_java.controller;
+package br.org.catolicasc.hangman_java.rest_controller;
 
 import java.util.List;
 import java.util.Random;
@@ -12,7 +12,7 @@ import br.org.catolicasc.hangman_java.bean.Word;
 import br.org.catolicasc.hangman_java.repository.WordRepository;
 
 @RestController
-public class WordController {
+public class WordRestController {
 
   @Autowired
   private WordRepository wordRepository;
@@ -20,6 +20,9 @@ public class WordController {
   @GetMapping("/word")
   public Word getWord(@RequestParam int dificulty) {
     List<Word> words = wordRepository.getWordsByDificulty(dificulty);
+    if (words.isEmpty()) {
+      return null;
+    }
 
     int randomIndex = new Random().nextInt(words.size());
     Word randomWord = words.get(randomIndex);

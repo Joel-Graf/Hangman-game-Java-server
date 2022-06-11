@@ -1,7 +1,5 @@
 package br.org.catolicasc.hangman_java.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +34,7 @@ public class UserController {
 
     User existingUser = userRepository.getUserByLogin(request.getLogin());
     if (existingUser != null) {
-      model.addAttribute("error", "Duplicated User"); // FIXME: Passar erro de um jeito melhor
+      model.addAttribute("error", "Duplicated User");
       return "user-create";
     }
 
@@ -61,12 +59,11 @@ public class UserController {
     User loggedUser = userRepository.getUserByLoginAndPassword(request.getLogin(), request.getPassword());
 
     if (loggedUser == null) {
-      model.addAttribute("error", "Invalid User"); // FIXME: Passar erro de um jeito melhor
+      model.addAttribute("error", "Invalid User");
       return "user-login";
     }
 
     return "redirect:/game"; // TODO: Passar usuário logado
-
   }
 
 }
