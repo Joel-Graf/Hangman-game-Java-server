@@ -12,12 +12,12 @@ public class GameController {
     return "game";
   }
 
-  @GetMapping("/game/defeat")
+  @GetMapping("/game_defeat")
   public String defeat() {
     return "defeat";
   }
 
-  @GetMapping("/game/victory")
+  @GetMapping("/game_victory")
   public String victory() {
     return "victory";
   }

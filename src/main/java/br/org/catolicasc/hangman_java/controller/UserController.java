@@ -40,8 +40,7 @@ public class UserController {
 
     User user = request.toUser();
     this.userRepository.save(user);
-    return "redirect:/game"; // TODO: Passar usuário logado
-
+    return "redirect:/user/login";
   }
 
   @GetMapping("user/login")
@@ -63,7 +62,7 @@ public class UserController {
       return "user-login";
     }
 
-    return "redirect:/game"; // TODO: Passar usuário logado
+    return "redirect:/game";
   }
 
 }
