@@ -1,54 +1,16 @@
-.input-hangman {
-  height: 30px;
-  width: 50px;
-  background-color: #0000000a;
-  border-radius: 10px;
-}
-
-.block-input {
-  height: 40%;
-  width: 100%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.game {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-}
-
-.body {
-  height: 100%;
-  width: 100%;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  display: flex;
-}
-
-.section {
-  display: flex;
-  flex-direction: row;
-  width: 40%;
-  height: 40%;
+  width: 60vw;
+  height: 70vh;
   background-color: rgba(0, 4, 123, 0.261);
 }
 
-.display-word {
-  width: 55%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.input-all-letter-choiced {
-  background-color: #cecece;
-  width: 45%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.display-letter-choiced {
-  font-size: medium;
+.form-input {
+  height: 30px;
+  width: 50px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
 }

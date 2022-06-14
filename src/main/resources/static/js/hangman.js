@@ -38,13 +38,13 @@ function Hangman() {
   function lostGame() {
     setAnonWordArray([]);
     setInputLettersHistory([]);
-    wordToAnonArray();
+    setAnonWordArray(wordToAnonArray(CURRENT_WORD));
     setRemaningAttempts(5);
     setInputLetter("");
   }
 
   function handleInput(letter) {
-    const isLetter = /([A-Z])\b/g.test(letter);
+    const isLetter = /([a-zA-Z])\b/g.test(letter);
     if (!isLetter) {
       return alert("Input Inválido! Somente letras.");
     }
@@ -74,41 +74,42 @@ function Hangman() {
   }
 
   return (
-    <div className="body">
-      <div className="section">
+    <div className="game">
+      <div className="header">
         <h2>Tentativas Restantes: {remaningAttempts}</h2>
-        <div className="display-word">
-          <h1>
-            {anonWordArray.map((letter, index) => (
-              <span key={letter + `${index}`}> {letter} </span>
-            ))}
-          </h1>
-        </div>
-
-        <div className="input-all-letter-choiced">
-          <h2 className="display-letter-choiced">
-            {inputLettersHistory.map((letter, index) => (
-              <span key={`${letter}:${index}`}>{letter.toUpperCase()}</span>
-            ))}
-          </h2>
-
-          <div className="block-input">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleInput(inputLetter);
-              }}
-            >
-              <input
-                className="input-hangman"
-                maxLength={1}
-                value={inputLetter}
-                onChange={(e) => setInputLetter(e.target.value)}
-              />
-            </form>
-          </div>
-        </div>
+        <h3>
+          Palavras inseridas:{" "}
+          {inputLettersHistory.map((letter, index) => (
+            <span key={`${letter}:${index}`}>{letter.toUpperCase()}</span>
+          ))}
+        </h3>
       </div>
+
+      <div className="display">
+        <h1>
+          {anonWordArray.map((letter, index) => (
+            <span style={{ marginLeft: 6 }} key={letter + `${index}`}>
+              {" "}
+              {`${letter}`}{" "}
+            </span>
+          ))}
+        </h1>
+      </div>
+
+      <form
+        className="form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleInput(inputLetter);
+        }}
+      >
+        <input
+          className="form-input"
+          maxLength={1}
+          value={inputLetter}
+          onChange={(e) => setInputLetter(e.target.value)}
+        />
+      </form>
     </div>
   );
 }
