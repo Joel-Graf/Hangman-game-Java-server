@@ -19,7 +19,7 @@ function Hangman() {
     if (isGameWon) {
       setTimeout(() => {
         alert("Parabéns!!");
-        // FIXME:
+        correctWord();
       }, 500);
     }
   }, [anonWordArray]);
@@ -37,19 +37,52 @@ function Hangman() {
       .then((res) => res.json())
       .then((game) => {
         if (game != {}) {
-          const _word = game.word.word;
-          const _life = game.playerLife;
-          setWord(_word);
-          setWordArray(wordToArray(_word));
-          setAnonWordArray(wordToAnonArray(_word));
-          setLifes(_life);
-          setGame(game);
+          updateGame(game);
         }
       })
       .catch((err) => {
         alert("Erro: ", err);
         getGameInProgress();
       });
+  }
+
+  function correctWord() {
+    return fetch("game/correct_word")
+      .then((res) => {
+        return new Promise((resolve, reject) => {
+          res
+            .json()
+            .then((res) => resolve(res))
+            .catch(() => {
+              resolve({});
+            });
+        });
+      })
+      .then((game) => {
+        if (game.id) {
+          updateGame(game);
+        } else {
+          alert("Você Ganhou!!!!");
+          getGameInProgress();
+        }
+      })
+      .catch((err) => {
+        alert("Erro: ", err);
+        correctWord();
+      });
+  }
+
+  function updateGame(game) {
+    const _word = game.word.word;
+    const _life = game.playerLife;
+    setWord(_word);
+    setWordArray(wordToArray(_word));
+    setAnonWordArray(wordToAnonArray(_word));
+    setInputLetter("");
+    setInputLettersHistory([]);
+    setLifes(_life);
+    setRemaningAttempts(5);
+    setGame(game);
   }
 
   function wordToArray(word) {
