@@ -1,6 +1,7 @@
 package br.org.catolicasc.hangman_java.rest_controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ public class GameRestController {
   @Autowired
   private WordRestController wordRestController;
 
+  @CrossOrigin(origins = "http://localhost:8180")
   @GetMapping("/game/game_in_progress")
   Game getGameInProgress() {
 
@@ -39,6 +41,7 @@ public class GameRestController {
     return existingGame;
   }
 
+  @CrossOrigin(origins = "http://localhost:8180")
   @GetMapping("/game/correct_word")
   Game correctWord() {
 
@@ -63,6 +66,7 @@ public class GameRestController {
     return gameRepository.save(game);
   }
 
+  @CrossOrigin(origins = "http://localhost:8180")
   @GetMapping("/game/incorrect_word")
   Game incorrectWord() {
 

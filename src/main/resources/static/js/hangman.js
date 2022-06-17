@@ -1,29 +1,56 @@
 function Hangman() {
-  const CURRENT_WORD = "MACARRONADA";
-  const CURRENT_WORD_ARRAY = wordToArray(CURRENT_WORD);
-
-  const [anonWordArray, setAnonWordArray] = useState(
-    wordToAnonArray(CURRENT_WORD)
-  );
+  const [game, setGame] = useState({});
+  const [word, setWord] = useState("");
+  const [wordArray, setWordArray] = useState([]);
+  const [anonWordArray, setAnonWordArray] = useState([]);
   const [inputLetter, setInputLetter] = useState("");
   const [inputLettersHistory, setInputLettersHistory] = useState([]);
+  const [lifes, setLifes] = useState(99);
   const [remaningAttempts, setRemaningAttempts] = useState(5);
 
   useEffect(() => {
+    getGameInProgress();
+  }, []);
+
+  useEffect(() => {
+    if (!anonWordArray.length) return;
+
     const isGameWon = anonWordArray.every((letter) => letter != " _ ");
     if (isGameWon) {
-      alert("Parabéns!!");
-      lostGame(); // FIXME:
+      setTimeout(() => {
+        alert("Parabéns!!");
+        // FIXME:
+      }, 500);
     }
   }, [anonWordArray]);
 
   useEffect(() => {
     if (remaningAttempts <= 0) {
       alert("Você Perdeu!!"); // FIXME:
-      lostGame();
+
       return;
     }
   }, [remaningAttempts]);
+
+  function getGameInProgress() {
+    return fetch("game/game_in_progress")
+      .then((res) => res.json())
+      .then((game) => {
+        if (game != {}) {
+          const _word = game.word.word;
+          const _life = game.playerLife;
+          setWord(_word);
+          setWordArray(wordToArray(_word));
+          setAnonWordArray(wordToAnonArray(_word));
+          setLifes(_life);
+          setGame(game);
+        }
+      })
+      .catch((err) => {
+        alert("Erro: ", err);
+        getGameInProgress();
+      });
+  }
 
   function wordToArray(word) {
     return word.split("");
@@ -32,15 +59,6 @@ function Hangman() {
   function wordToAnonArray(word) {
     const anonWordArray = word.split("");
     return anonWordArray.map(() => " _ ");
-  }
-
-  // FIXME: Remover
-  function lostGame() {
-    setAnonWordArray([]);
-    setInputLettersHistory([]);
-    setAnonWordArray(wordToAnonArray(CURRENT_WORD));
-    setRemaningAttempts(5);
-    setInputLetter("");
   }
 
   function handleInput(letter) {
@@ -56,7 +74,7 @@ function Hangman() {
 
     const _anonWordArray = anonWordArray;
     let foundLetter = false;
-    CURRENT_WORD_ARRAY.forEach((wordLetter, index) => {
+    wordArray.forEach((wordLetter, index) => {
       if (wordLetter == letter) {
         _anonWordArray[index] = letter;
         foundLetter = true;
