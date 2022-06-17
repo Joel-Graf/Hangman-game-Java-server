@@ -17,18 +17,15 @@ function Hangman() {
 
     const isGameWon = anonWordArray.every((letter) => letter != " _ ");
     if (isGameWon) {
-      setTimeout(() => {
-        alert("Parabéns!!");
-        correctWord();
-      }, 500);
+      alert("Parabéns!!");
+      correctWord();
     }
   }, [anonWordArray]);
 
   useEffect(() => {
     if (remaningAttempts <= 0) {
-      alert("Você Perdeu!!"); // FIXME:
-
-      return;
+      alert("Que pena!!");
+      incorrectWord();
     }
   }, [remaningAttempts]);
 
@@ -72,6 +69,32 @@ function Hangman() {
       });
   }
 
+  function incorrectWord() {
+    return fetch("game/incorrect_word")
+      .then((res) => {
+        return new Promise((resolve, reject) => {
+          res
+            .json()
+            .then((res) => resolve(res))
+            .catch(() => {
+              resolve({});
+            });
+        });
+      })
+      .then((game) => {
+        if (game.id) {
+          updateGame(game);
+        } else {
+          alert("Você Perdeu!!!");
+          getGameInProgress();
+        }
+      })
+      .catch((err) => {
+        alert("Erro: ", err);
+        incorrectWord();
+      });
+  }
+
   function updateGame(game) {
     const _word = game.word.word;
     const _life = game.playerLife;
@@ -97,11 +120,13 @@ function Hangman() {
   function handleInput(letter) {
     const isLetter = /([a-zA-Z])\b/g.test(letter);
     if (!isLetter) {
+      setInputLetter("");
       return alert("Input Inválido! Somente letras.");
     }
 
     letter = letter.toUpperCase();
     if (inputLettersHistory.includes(letter)) {
+      setInputLetter("");
       return alert("Input Inválido! Letra já inserida.");
     }
 
@@ -127,6 +152,7 @@ function Hangman() {
   return (
     <div className="game">
       <div className="header">
+        <h4>Vidas: {lifes}</h4>
         <h2>Tentativas Restantes: {remaningAttempts}</h2>
         <h3>
           Palavras inseridas:{" "}
